@@ -20,21 +20,25 @@
 // }
 // export default Header;
 
+import UserAvatar from "../features/authentication/UserAvatar"
 import useUser from "../features/authentication/useUser"
+import HeaderMenu from "./HeaderMenu"
 
 function Header() {
+  const { isLoading, user } = useUser()
 
-  const { data } = useUser()
-  console.log('====================================');
-  
-  console.log(data, 123456);
-  console.log('====================================');
-
-  return <div>
-    <div className="bg-red-100 py-4 px-8 border-b border-secondary-200">
-      <div className="container xl:max-w-screen-lg flex items-center justify-end"></div>
+  return (
+    <div>
+      <div className="bg-red-100 py-4 px-8 border-b border-secondary-200">
+        <div
+          className={`container xl:max-w-screen-lg flex items-center justify-end gap-x-8 ${!isLoading ? "blure-sm opacity-50" : ""}`}
+        >
+          <UserAvatar />
+          <HeaderMenu />
+        </div>
+      </div>
     </div>
-  </div>
+  )
 }
 
 export default Header

@@ -3,7 +3,7 @@ import useLogout from "./useLogout"
 import Loading from "../../ui/Loading"
 
 function Logout() {
-  const { isPending, logout } = useLogout()
+  const { isPending       , logout } = useLogout()
 
   return isPending ? (
     <Loading />

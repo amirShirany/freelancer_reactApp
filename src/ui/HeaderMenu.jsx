@@ -22,10 +22,9 @@
 // }
 // export default HeaderMenu;
 
-
-import { HiOutlineUser } from "react-icons/hi";
-import DarkModeToggle from "./DarkModeToggle";
-import Logout from "../features/authentication/Logout";
+import { HiOutlineUser } from "react-icons/hi"
+import DarkModeToggle from "./DarkModeToggle"
+import Logout from "../features/authentication/Logout"
 
 function HeaderMenu() {
   return (

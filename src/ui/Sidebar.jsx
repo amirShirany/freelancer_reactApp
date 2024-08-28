@@ -23,7 +23,7 @@ function Sidebar() {
               to={"owner/dashbord"}
               className={({ isActive }) => {
                 isActive
-                  ? `${liStyle} bg-primary-100/50 text-primary-900`
+                  ? `${liStyle} bg-primary-100/80 text-primary-900`
                   : `${liStyle} text-secondary-600`
               }}
             >

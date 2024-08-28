@@ -1,40 +1,45 @@
-import { createContext, useContext, useEffect } from "react";
-import useLocalStorageState from "../hooks/useLocalStoragesTate";
+import { createContext, useContext, useEffect } from "react"
+import useLocalStorageState from "../hooks/useLocalStoragesTate"
 
-const DarkModeContext = createContext();
+const DarkModeContext = createContext()
 
-export function DarkModeProvier({ children }) {
+//provider
+export function DarkModeProvier({ Children }) {
   const [isDarkMode, setIsDarkMode] = useLocalStorageState(
-    "isDarkMoode",
+    "isDarkMode",
     window.matchMedia("(prefers-color-scheme: dark)").matches // true, false
-  );
+  )
 
-  const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
+  const toggleDarkMode = () => setIsDarkMode((prev) => !prev)
 
   useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark-mode");
-      document.documentElement.classList.remove("light-mode");
-    } else {
-      document.documentElement.classList.add("light-mode");
-      document.documentElement.classList.remove("dark-mode");
-    }
-  }, [isDarkMode]);
+    isDarkMode
+      ? document.documentElement.classList.add("dark-mode") &&
+        document.documentElement.classList.remove("light-mode")
+      : //else
+        document.documentElement.classList.add("light-mode") &&
+        document.documentElement.classList.remove("dark-mode")
+  }, [isDarkMode])
 
   return (
-    <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
-      {children}
-    </DarkModeContext.Provider>
-  );
+    <DarkModeContext.provider value={(isDarkMode, toggleDarkMode)}>
+      {Children}
+    </DarkModeContext.provider>
+  )
 }
 
+// custom hook for useDarkMode
 export function useDarkMode() {
-  const context = useContext(DarkModeContext);
+  const context = useContext(DarkModeContext)
 
   if (context === undefined)
-    throw new Error("DarkModeContext was used outside of DarkModeProvier");
+    throw new Error("DarkModeContext was used outside of DarkModeProvier")
 
-  return context;
+  return context
 }
 
-
+//// Use Context ////
+// 1_createContext()
+// 2_definition provider
+// 3_passed_Value to provider
+// 4_customHook for access

@@ -22,9 +22,28 @@
 // }
 // export default HeaderMenu;
 
+
+import { HiOutlineUser } from "react-icons/hi";
+import DarkModeToggle from "./DarkModeToggle";
+import Logout from "../features/authentication/Logout";
+
 function HeaderMenu() {
   return (
-    <div>HeaderMenu</div>
+    <div>
+      <ul className="flex gap-x-4 items-center">
+        <li>
+          <link to="dashbord">
+            <HiOutlineUser className="w-5 h-5 text-primary-900" />
+          </link>
+        </li>
+        <li>
+          <DarkModeToggle />
+        </li>
+        <li>
+          <Logout />
+        </li>
+      </ul>
+    </div>
   )
 }
 
